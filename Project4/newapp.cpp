@@ -1,28 +1,34 @@
 #include <iostream>
+
 using namespace std;
 
 int main() {
-    int num;
+	int count;
+	cout << "fibonacci sequence input (1~20) : ";
+	cin >> count;
 
-    cout << "Input 1~9: ";
-    cin >> num;
+	if (count < 1 || count > 20) {
+		cout << "input error" << endl;
+		return 1;
 
-    if (num < 1 || num > 9) {
-        cout << "ERROR: Only numbers from 1 to 9 are allowed." << endl;
-        return 1;
-    }
+	}
 
-    for (int i = 0; i <= 9; i++) {
-        if (i == 0)
-            cout << num;
-        else
-            cout << i << num;
+	int fib[20];
 
-        if (i != 9)
-            cout << ", ";
-    }
+	fib[0] = 1;
+	fib[1] = 1;
 
-    cout << endl;
+	for (int i = 2; i < count; i++) {
+		fib[i] = fib[i - 1] + fib[i - 2];
+	}
 
-    return 0;
+	for (int i = 0; i < count; i++) {
+		cout << fib[i];
+		if (i != count - 1)
+			cout << " ";
+
+	}
+	cout << endl;
+	return 0;
+
 }
